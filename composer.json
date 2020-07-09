@@ -1,0 +1,31 @@
+{
+    "name": "polares552/activity-logger-laravel",
+    "description": "Armazenamento de Logs via middleware Laravel",
+    "type": "package",
+    "require": {
+        "php": ">=7.0.0",
+        "jaybizzle/laravel-crawler-detect": "1.*"
+    },
+    "authors": [
+        {
+            "name": "Caio Felipe",
+            "email": "caiofelipe.up@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "polares552\\ActivityLogger\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "extra": {
+        "laravel": {
+            "providers": [
+                "polares552\\ActivityLogger\\ActivityLoggerServiceProvider"
+            ]
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
