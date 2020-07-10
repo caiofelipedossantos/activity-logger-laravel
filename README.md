@@ -93,5 +93,5 @@ Atualmente o **ActivityLogger**  efetua o armazenamento dos seguintes itens:
 
 ## Screenshots
 
-![Armazenamento](https://doc-0c-4o-docs.googleusercontent.com/docs/securesc/gc0bubv9l7trmepc4o2i07tjr9p7i5rv/dokg6bompip9ui2atk19lvi6pslucnan/1594350675000/04649545898294582601/02284283181153919839/1DiUSXY69e73akLvor0JNfoZf-ncuTKsR?e=view&authuser=0&nonce=loh61nr38ln98&user=02284283181153919839&hash=lr2pn7dvl7skjcngrk0h96hlk10ud385)
+![Armazenamento](https://raw.githubusercontent.com/polares552/activity-logger-laravel/master/ActivityLogger.png)
 
