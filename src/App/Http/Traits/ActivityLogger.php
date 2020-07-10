@@ -11,9 +11,12 @@ use Validator;
 trait ActivityLogger{
 
     public static function activity($description = null){
-        
+
         $userType = trans('ActivityLogger::activity-logger.userTypes.guest');
         $userId = null;
+        $paramns = json_encode(Request::all());
+        $controller = self::filterController(Request::route()->getAction()['controller']);
+        $method = self::filterMethod(Request::route()->getAction()['controller']);
 
         if (\Auth::check()) {
             $userType = trans('ActivityLogger::activity-logger.userTypes.registered');
@@ -55,6 +58,9 @@ trait ActivityLogger{
             'userType'          => $userType,
             'userId'            => $userId,
             'route'             => Request::fullUrl(),
+            'controller'        => $controller,
+            'method'            => $method,
+            'paramns'           => $paramns,
             'ipAddress'         => Request::ip(),
             'userAgent'         => Request::header('user-agent'),
             'locale'            => Request::header('accept-language'),
@@ -89,6 +95,9 @@ trait ActivityLogger{
             'userType'        => $data['userType'],
             'userId'          => $data['userId'],
             'route'           => $data['route'],
+            'controller'      => $data['controller'],
+            'method'          => $data['method'],
+            'paramns'         => $data['paramns'],
             'ipAddress'       => $data['ipAddress'],
             'userAgent'       => $data['userAgent'],
             'locale'          => $data['locale'],
@@ -113,5 +122,15 @@ trait ActivityLogger{
         });
 
         return json_encode($errors, true);
+    }
+
+    private static function filterController($controller){
+        $controller = explode('@', $controller);
+        return preg_replace('/.*\\\/', '', $controller[0]);
+    }
+
+    private static function filterMethod($method){
+        $method = explode('@', $method);
+        return $method[1];
     }
 }

@@ -19,6 +19,9 @@ class CreateActivityLoggersTable extends Migration
                 $table->string(config('activity-logger.table.columns.userType', 'userType'));
                 $table->integer(config('activity-logger.table.columns.userId', 'userId'))->nullable();
                 $table->longText(config('activity-logger.table.columns.route', 'route'))->nullable();
+                $table->string(config('activity-logger.table.columns.controller', 'controller'))->nullable();
+                $table->string(config('activity-logger.table.columns.method', 'method'))->nullable();
+                $table->longText(config('activity-logger.table.columns.paramns', 'paramns'))->nullable();
                 $table->ipAddress(config('activity-logger.table.columns.ipAddress', 'ipAddress'))->nullable();
                 $table->text(config('activity-logger.table.columns.userAgent', 'userAgent'))->nullable();
                 $table->string(config('activity-logger.table.columns.locale', 'locale'))->nullable();
