@@ -2,6 +2,7 @@
     "name": "polares552/activity-logger-laravel",
     "description": "Armazenamento de Logs via middleware Laravel",
     "type": "package",
+    "version": "1.0.0",
     "require": {
         "php": ">=7.0.0",
         "jaybizzle/laravel-crawler-detect": "1.*"
