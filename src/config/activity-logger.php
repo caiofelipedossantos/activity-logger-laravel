@@ -18,7 +18,7 @@ return [
             'route' => 'route',
             'controller' => 'controller',
             'method' => 'method',
-            'params' => 'params',
+            'paramns' => 'paramns',
             'ipAddress' => 'ipAddress',
             'userAgent' => 'userAgent',
             'locale' => 'locale',

@@ -36,7 +36,7 @@ class ActivityLog
      */
     protected function shouldLog($request)
     {
-        foreach (config('activity-logger.loggerMiddlewareExcept', []) as $except) {
+        foreach (config('ActivityLogger::activity-logger.loggerMiddlewareExcept', []) as $except) {
             if ($except !== '/') {
                 $except = trim($except, '/');
             }

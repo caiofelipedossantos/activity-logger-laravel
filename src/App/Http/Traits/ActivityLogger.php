@@ -54,25 +54,25 @@ trait ActivityLogger{
         }
 
         $data = [
-            'description'       => $description,
-            'userType'          => $userType,
-            'userId'            => $userId,
-            'route'             => Request::fullUrl(),
-            'controller'        => $controller,
-            'method'            => $method,
-            'paramns'           => $paramns,
-            'ipAddress'         => Request::ip(),
-            'userAgent'         => Request::header('user-agent'),
-            'locale'            => Request::header('accept-language'),
-            'referer'           => Request::header('referer'),
-            'methodType'        => Request::method(),
+            config('activity-logger.table.columns.description', 'description')       => $description,
+            config('activity-logger.table.columns.userType', 'userType')             => $userType,
+            config('activity-logger.table.columns.userId', 'userId')                 => $userId,
+            config('activity-logger.table.columns.route', 'route')                   => Request::fullUrl(),
+            config('activity-logger.table.columns.controller', 'controller')         => $controller,
+            config('activity-logger.table.columns.method', 'method')                 => $method,
+            config('activity-logger.table.columns.paramns', 'paramns')               => $paramns,
+            config('activity-logger.table.columns.ipAddress', 'ipAddress')           => Request::ip(),
+            config('activity-logger.table.columns.userAgent', 'userAgent')           => Request::header('user-agent'),
+            config('activity-logger.table.columns.locale', 'locale')                 => Request::header('accept-language'),
+            config('activity-logger.table.columns.referer', 'referer')               => Request::header('referer'),
+            config('activity-logger.table.columns.methodType', 'methodType')         => Request::method(),
         ];
 
         // Validation Instance
         $validator = Validator::make($data, ActivityLoggerModel::Rules([]));
         if ($validator->fails()) {
             $errors = self::prepareErrorMessage($validator->errors(), $data);
-            if (config('activity-logger.logDBActivityLoggerFailuresToFile')) {
+            if (config('ActivityLoggeractivity-logger.logDBActivityLoggerFailuresToFile')) {
                 Log::error('Falha ao registrar o evento de atividade. Falha na validação: '.$errors);
             }
         } else {
@@ -91,18 +91,18 @@ trait ActivityLogger{
     private static function storeActivity($data)
     {
         ActivityLoggerModel::create([
-            'description'     => $data['description'],
-            'userType'        => $data['userType'],
-            'userId'          => $data['userId'],
-            'route'           => $data['route'],
-            'controller'      => $data['controller'],
-            'method'          => $data['method'],
-            'paramns'         => $data['paramns'],
-            'ipAddress'       => $data['ipAddress'],
-            'userAgent'       => $data['userAgent'],
-            'locale'          => $data['locale'],
-            'referer'         => $data['referer'],
-            'methodType'      => $data['methodType'],
+            config('activity-logger.table.columns.description', 'description')     => $data[config('activity-logger.table.columns.description', 'description')],
+            config('activity-logger.table.columns.userType', 'userType')           => $data[config('activity-logger.table.columns.userType', 'userType')],
+            config('activity-logger.table.columns.userId', 'userId')               => $data[config('activity-logger.table.columns.userId', 'userId')],
+            config('activity-logger.table.columns.route', 'route')                 => $data[config('activity-logger.table.columns.route', 'route')],
+            config('activity-logger.table.columns.controller', 'controller')       => $data[config('activity-logger.table.columns.controller', 'controller')],
+            config('activity-logger.table.columns.method', 'method')               => $data[config('activity-logger.table.columns.method', 'method')],
+            config('activity-logger.table.columns.paramns', 'paramns')             => $data[config('activity-logger.table.columns.paramns', 'paramns')],
+            config('activity-logger.table.columns.ipAddress', 'ipAddress')         => $data[config('activity-logger.table.columns.ipAddress', 'ipAddress')],
+            config('activity-logger.table.columns.userAgent', 'userAgent')         => $data[config('activity-logger.table.columns.userAgent', 'userAgent')],
+            config('activity-logger.table.columns.locale', 'locale')               => $data[config('activity-logger.table.columns.locale', 'locale')],
+            config('activity-logger.table.columns.referer', 'referer')             => $data[config('activity-logger.table.columns.referer', 'referer')],
+            config('activity-logger.table.columns.methodType', 'methodType')       => $data[config('activity-logger.table.columns.methodType', 'methodType')],
         ]);
     }
 

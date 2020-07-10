@@ -30,26 +30,9 @@ class ActivityLoggerModel extends Model
      */
     public $timestamps = true;
 
-    /**
-     * Fillable fields for a Profile.
-     *
-     * @var array
-     */
-    protected $fillable = [
-        'description',
-        'userType',
-        'userId',
-        'route',
-        'controller',
-        'method',
-        'paramns',
-        'ipAddress',
-        'userAgent',
-        'locale',
-        'referer',
-        'methodType',
-    ];
+    protected $guarded = [];
 
+    
     /**
      * Create a new instance to set the table and connection.
      *
@@ -99,18 +82,18 @@ class ActivityLoggerModel extends Model
     {
         return array_merge(
             [
-                'description'   => 'required|string',
-                'userType'      => 'required|string',
-                'userId'        => 'nullable|integer',
-                'route'         => 'nullable|url',
-                'paramns'       => 'nullable|string',
-                'controller'    => 'nullable|string',
-                'method'        => 'nullable|string',
-                'ipAddress'     => 'nullable|ip',
-                'userAgent'     => 'nullable|string',
-                'locale'        => 'nullable|string',
-                'referer'       => 'nullable|string',
-                'methodType'    => 'nullable|string',
+                config('activity-logger.table.columns.description', 'description')  => 'required|string',
+                config('activity-logger.table.columns.userType', 'userType')        => 'required|string',
+                config('activity-logger.table.columns.userId', 'userId')            => 'nullable|integer',
+                config('activity-logger.table.columns.route', 'route')              => 'nullable|url',
+                config('activity-logger.table.columns.paramns', 'paramns')          => 'nullable|string',
+                config('activity-logger.table.columns.controller', 'controller')    => 'nullable|string',
+                config('activity-logger.table.columns.method', 'method')            => 'nullable|string',
+                config('activity-logger.table.columns.ipAddress', 'ipAddress')      => 'nullable|ip',
+                config('activity-logger.table.columns.userAgent', 'userAgent')      => 'nullable|string',
+                config('activity-logger.table.columns.locale', 'locale')            => 'nullable|string',
+                config('activity-logger.table.columns.referer', 'referer')          => 'nullable|string',
+                config('activity-logger.table.columns.methodType', 'methodType')    => 'nullable|string',
             ],
             $merge
         );

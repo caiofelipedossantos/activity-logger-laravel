@@ -61,7 +61,7 @@ class ActivityLoggerServiceProvider extends ServiceProvider{
         ], 'config');
 
         //Utiliza o arquivo de configurações
-        $this->mergeConfigFrom(__DIR__.'/config/activity-logger.php', 'activity-logger');
+        $this->mergeConfigFrom(__DIR__.'/config/activity-logger.php', 'ActivityLogger');
 
         //Disponibiliza a publicação do arquivo das migrations
         if (! class_exists('CreateActivityLoggersTable')) {
