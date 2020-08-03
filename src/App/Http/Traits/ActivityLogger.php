@@ -15,8 +15,14 @@ trait ActivityLogger{
         $userType = trans('ActivityLogger::activity-logger.userTypes.guest');
         $userId = null;
         $paramns = json_encode(Request::all());
-        $controller = self::filterController(Request::route()->getAction()['controller']);
-        $method = self::filterMethod(Request::route()->getAction()['controller']);
+        $controller = null;
+        $method = null;
+
+
+        if(!empty(Request::route()->getAction()['controller'])){
+            $controller = self::filterController(Request::route()->getAction()['controller']);
+            $method = self::filterMethod(Request::route()->getAction()['controller']);
+        }
 
         if (\Auth::check()) {
             $userType = trans('ActivityLogger::activity-logger.userTypes.registered');
